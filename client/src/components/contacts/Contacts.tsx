@@ -30,6 +30,7 @@ function Orders() {
     info: { name: "", phone: "" },
   });
 
+  //Получаем контакты с сервера
   async function getContacts() {
     try {
       const response = await ContactServices.fetchContacts();
@@ -39,15 +40,18 @@ function Orders() {
     }
   }
 
+  //Отрабатываем нажатие на кнопку редактирования контакта
   const handlerEdit = (id: string, info: any) => {
     setDialogEdit({ open: true, info });
     setIdOfLinks(id);
   };
 
+  //Отправляем запрос на получение контактов при рендере
   React.useEffect(() => {
     getContacts();
   }, []);
 
+  //Добавление нового контакта
   const handlerAdd = (newContactName: string, newContactPhone: string) => {
     let idVariable = uuid.v4();
     setContacts([
@@ -61,6 +65,7 @@ function Orders() {
     setDialogAdd(false);
   };
 
+  //Добавление измененного контакта
   const handlerEditChange = (idProp: any) => {
     const arrCopy = contacts.map((i) =>
       i._id === idOfLinks
@@ -72,6 +77,7 @@ function Orders() {
     storeMOBX.addContacts(arrCopy);
   };
 
+  //Удаление контакта
   const handlerDelete = (i: number) => {
     setContacts(contacts.filter((_, idx) => idx !== i));
     storeMOBX.addContacts(contacts.filter((_, idx) => idx !== i));

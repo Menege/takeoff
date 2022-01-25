@@ -30,6 +30,7 @@ function Copyright(props) {
 
 const theme = createTheme();
 
+
 function SignUp() {
   const { storeMOBX } = React.useContext(Context);
 

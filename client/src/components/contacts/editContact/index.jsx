@@ -13,6 +13,7 @@ function EditContact({ dialogEdit, editContacts, gateEditDialog }) {
   const [newContactName, setNewContactName] = React.useState("");
   const [newContactPhone, setNewContactPhone] = React.useState("");
 
+  //Проверяем отрисовку модального окна и присваиваем полям значения
   React.useEffect(() => {
     if (dialogEdit.open === true) {
       setNewContactName(dialogEdit.info.name);
