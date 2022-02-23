@@ -19,6 +19,7 @@ app.use(cors({
 }))
 app.use('/api', router)
 app.use(errorMiddleWare)
+app.use(express.static('../client/build'));
 
 const start = async () => {
   try {
